@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send Your Name 💌</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+
+<body style="background:black;color:white;text-align:center;padding-top:100px;font-family:sans-serif;">
+
+<h1>Enter Your Name 💖</h1>
+
+<input type="text" id="name" placeholder="Enter your name"
+style="padding:12px;border-radius:10px;border:none;width:220px;font-size:16px;">
+
+<br><br>
+
+<button onclick="sendMail()"
+style="padding:12px 25px;border-radius:25px;border:none;background:#ff004f;color:white;font-size:16px;cursor:pointer;">
+Submit
+</button>
+
+<script>
+(function(){
+emailjs.init("Py1rvT9sTtw6bArwK");
+})();
+
+function sendMail() {
+var name = document.getElementById("name").value;
+
+if(name === ""){
+alert("Please enter your name 😊");
+return;
+}
+
+var params = {
+user_name: name
+};
+
+emailjs.send("service_lh0dd4s","template_3kr8unx",params)
+.then(function(res){
+alert("Name sent successfully 💌");
+document.getElementById("name").value = "";
+})
+.catch(function(error){
+alert("Something went wrong ❌");
+});
+}
+</script>
+
+</body>
+</html>
